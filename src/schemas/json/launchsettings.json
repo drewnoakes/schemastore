@@ -124,8 +124,9 @@
         },
         "nativeDebugging": {
           "type": "boolean",
-          "description": "Set to true to enable native code debugging.",
-          "default": false
+          "description": "Deprecated. Use debugEngine instead. Set to true to enable native code debugging.",
+          "default": false,
+          "deprecated": true
         },
         "externalUrlConfiguration": {
           "type": "boolean",
@@ -214,6 +215,12 @@
           "type": "string",
           "description": "A relative or absolute path to the .NET project file on which Roslyn component should be executed. Relative to the current project's folder.",
           "default": ""
+        },
+        "debugEngine": {
+          "type": "string",
+          "description": "Select the debugging engine to use when launching.",
+          "enum": ["managed", "mixed", "native"],
+          "default": "managed"
         }
       }
     }
