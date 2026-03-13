@@ -9,7 +9,9 @@
           "$ref": "#/definitions/profileContent"
         }
       ],
-      "required": ["commandName"]
+      "required": [
+        "commandName"
+      ]
     },
     "iisSetting": {
       "type": "object",
@@ -85,7 +87,6 @@
             "SdkContainer",
             "WSL2"
           ],
-          "default": "",
           "minLength": 1
         },
         "commandLineArgs": {
@@ -109,7 +110,7 @@
         },
         "launchUrl": {
           "type": "string",
-          "description": "The relative URL to launch in the browser."
+          "description": "The URL to launch in the browser. Can be an absolute or relative URL."
         },
         "environmentVariables": {
           "type": "object",
@@ -120,7 +121,7 @@
         },
         "applicationUrl": {
           "type": "string",
-          "description": "A semi-colon delimited list of URL(s) to configure for the web server."
+          "description": "A semicolon-delimited list of URL(s) to configure for the web server (e.g. 'http://localhost:5000;https://localhost:5001')."
         },
         "nativeDebugging": {
           "type": "boolean",
@@ -139,9 +140,13 @@
           "default": true
         },
         "ancmHostingModel": {
-          "enum": ["InProcess", "OutOfProcess"],
-          "description": "Specifies the hosting model to use when running ASP.NET core projects in IIS and IIS Express.",
-          "default": false
+          "type": "string",
+          "enum": [
+            "InProcess",
+            "OutOfProcess"
+          ],
+          "description": "Specifies the hosting model to use when running ASP.NET Core projects in IIS and IIS Express.",
+          "default": "InProcess"
         },
         "sqlDebugging": {
           "type": "boolean",
@@ -168,7 +173,11 @@
           "description": "The name and port number of the remote machine in name:port format."
         },
         "authenticationMode": {
-          "enum": ["None", "Windows"],
+          "type": "string",
+          "enum": [
+            "None",
+            "Windows"
+          ],
           "description": "The authentication scheme to use when connecting to the remote computer.",
           "default": "None"
         },
@@ -203,7 +212,7 @@
         },
         "dotnetRunMessages": {
           "type": "boolean",
-          "description": "Set to true to display a message when the project is building.",
+          "description": "Set to true to display dotnet run messages in the console output.",
           "default": true
         },
         "inspectUri": {
@@ -218,8 +227,16 @@
         },
         "debugEngine": {
           "type": "string",
-          "description": "Select the debugging engine to use when launching.",
-          "enum": ["managed", "mixed", "native"],
+          "description": "Select the debugging engine to use when launching. \"managed\" auto-detects the managed engine based on the project target framework. The \",native\" suffix enables mixed-mode debugging with both managed and native debuggers. Explicit variants (managed-core, managed-framework) override auto-detection for scenarios such as multi-targeting.",
+          "enum": [
+            "managed",
+            "managed,native",
+            "managed-core",
+            "managed-core,native",
+            "managed-framework",
+            "managed-framework,native",
+            "native"
+          ],
           "default": "managed"
         }
       }
