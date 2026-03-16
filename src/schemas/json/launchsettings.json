@@ -125,7 +125,7 @@
         },
         "nativeDebugging": {
           "type": "boolean",
-          "description": "Deprecated. Use debugEngine instead. Set to true to enable native code debugging.",
+          "description": "Deprecated since Visual Studio 18.5. Use debugEngine instead. Set to true to enable native code debugging.",
           "default": false,
           "deprecated": true
         },
@@ -227,7 +227,7 @@
         },
         "debugEngine": {
           "type": "string",
-          "description": "Select the debugging engine to use when launching. \"managed\" auto-detects the managed engine based on the project target framework. The \",native\" suffix enables mixed-mode debugging with both managed and native debuggers. Explicit variants (managed-core, managed-framework) override auto-detection for scenarios such as multi-targeting.",
+          "description": "Select the debugging engine to use when launching. \"managed\" auto-detects the managed engine based on the project target framework. The \",native\" suffix enables mixed-mode debugging with both managed and native debuggers. Explicit variants (managed-core, managed-framework) override auto-detection for scenarios such as multi-targeting. Available since Visual Studio 18.5.",
           "enum": [
             "managed",
             "managed,native",
